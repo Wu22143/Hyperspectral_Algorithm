@@ -1,3 +1,18 @@
+def calc_R(HIM):
+    '''
+    Calculate the Correlation Matrix R use HIM
+    param HIM: hyperspectral imaging, type is 3d-array
+    '''
+    try:
+        #N = HIM.shape[0]*HIM.shape[1]
+        #r = np.transpose(np.reshape(HIM, [-1, HIM.shape[2]]))
+        #R = (1/10249)*(r@r.T)
+        r = np.transpose(HIM) #200,21025
+        R = (1/HIM.shape[0])*(r@r.T)
+        return R
+    except:
+        print('An error occurred in calc_R()')
+
 def cem(HIM, d, R = None):
     '''
     Constrained Energy Minimization for image to point
